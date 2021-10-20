@@ -10,9 +10,8 @@ pong::Console::Console(bool debug)
     this->hWindowConsole = GetConsoleWindow();
     
     SetConsoleTitleA("Pong game by Sorrow");
-    GetConsoleScreenBufferInfoEx(this->hConsoleOutput, &this->consoleInfo);
     ShowWindow(this->hWindowConsole, SW_SHOWMAXIMIZED);
-    
+    GetConsoleScreenBufferInfoEx(this->hConsoleOutput, &this->consoleInfo);
 }
 
 pong::Console::~Console()
@@ -31,4 +30,10 @@ void pong::Console::Flushssm()
     DWORD dummy;
     WriteFile(this->hConsoleOutput, this->ssm.str().c_str(), strlen(this->ssm.str().c_str()), &dummy, NULL);
     this->ssm.str("");
+}
+
+void pong::Console::Refresh(const pong::Player *p1, const pong::Player *p2)
+{
+    this->ssm << "P1: " << (int)p1->pos << "\tP2: " << (int)p2->pos << "\n";
+    this->Flushssm();
 }

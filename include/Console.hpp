@@ -5,6 +5,7 @@
 #include <string>
 #include <iostream> 
 #include <sstream>
+#include <Player.hpp>
 
 namespace pong      
 {
@@ -20,6 +21,7 @@ namespace pong
     public:
         Console(bool debug);
         ~Console();
+        void Refresh(const pong::Player *p1, const pong::Player *p2);
     };
     
     

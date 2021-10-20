@@ -9,6 +9,8 @@ namespace pong
     {
     private:
         bool IsDebug(int argc, char *argv[]);
+        pong::Console *console;
+        pong::Player *p1, *p2;
     public:
         App(/* args */);
         ~App();

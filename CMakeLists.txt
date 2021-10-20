@@ -9,5 +9,6 @@ include_directories(include)
 add_executable(pong src/main.cpp
                     src/App.cpp
                     src/Console.cpp
+                    src/Player.cpp
 )
 
