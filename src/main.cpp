@@ -1,6 +1,11 @@
-#include <iostream>
+#include <App.hpp>
 
-int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+
+
+
+
+int main (int argc, char *argv[])
+{
+    pong::App mainApp;
+    return mainApp.Start(argc, argv);
 }

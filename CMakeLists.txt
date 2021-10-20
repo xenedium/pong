@@ -3,4 +3,11 @@ project(pong)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(pong src/main.cpp)
+include_directories(include)
+
+
+add_executable(pong src/main.cpp
+                    src/App.cpp
+                    src/Console.cpp
+)
+
