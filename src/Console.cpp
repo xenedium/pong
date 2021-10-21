@@ -34,6 +34,6 @@ void pong::Console::Flushssm()
 
 void pong::Console::Refresh(const pong::Player *p1, const pong::Player *p2)
 {
-    this->ssm << "P1: " << (int)p1->pos << "\tP2: " << (int)p2->pos << "\n";
+    this->ssm << "P1: " << (int)p1->pos << "\tP2: " << (int)p2->pos << " \r";
     this->Flushssm();
 }

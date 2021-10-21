@@ -15,10 +15,9 @@ namespace pong
         ~Player();
         void StartThread();
         uint8_t pos;
-        void RefreshPos();
     };
-    void OnP1KeysPressed(HANDLE hWritePipe);
-    void OnP2KeysPressed(HANDLE hWritePipe);
+    void OnP1KeysPressed(uint8_t *pos);
+    void OnP2KeysPressed(uint8_t *pos);
     
 } // namespace pong
 
