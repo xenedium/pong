@@ -1,20 +1,21 @@
 #include <App.hpp>
 
-pong::App::App()
+pong::App::App(int argc, char *argv[])
 {
-    
+    this->console = new pong::Console(pong::App::IsDebug(argc, argv));
+    this->p1 = new pong::Player(1);
+    this->p2 = new pong::Player(2);
 }
 
 pong::App::~App()
 {
-    delete this->console, this->p1, this->p2;
+    delete this->console;
+    delete this->p1;
+    delete this->p2;
 }
 
-int pong::App::Start(int argc, char *argv[])
+int pong::App::Start()
 {
-    this->console = new pong::Console(this->IsDebug(argc, argv));
-    this->p1 = new pong::Player(1);
-    this->p2 = new pong::Player(2);
 
     this->p1->StartThread();
     this->p2->StartThread();
@@ -24,7 +25,7 @@ int pong::App::Start(int argc, char *argv[])
         console->Refresh(this->p1, this->p2);
         Sleep(100);
     }
-    return 0;
+
 }
 
 bool pong::App::IsDebug(int argc, char *argv[])

@@ -6,6 +6,6 @@
 
 int main (int argc, char *argv[])
 {
-    pong::App mainApp;
-    return mainApp.Start(argc, argv);
+    pong::App mainApp(argc, argv);
+    return mainApp.Start();
 }
