@@ -25,7 +25,7 @@ void pong::Console::gtxy(short x, short y)
     SetConsoleCursorPosition(this->hConsoleOutput, {x, y});
 }
 
-void pong::Console::Flushssm()
+void pong::Console::FlushSsm()
 {
     DWORD dummy;
     WriteFile(this->hConsoleOutput, this->ssm.str().c_str(), strlen(this->ssm.str().c_str()), &dummy, NULL);
@@ -35,5 +35,5 @@ void pong::Console::Flushssm()
 void pong::Console::Refresh(const pong::Player *p1, const pong::Player *p2)
 {
     this->ssm << "P1: " << (int)p1->pos << "\tP2: " << (int)p2->pos << " \r";
-    this->Flushssm();
+    this->FlushSsm();
 }

@@ -16,8 +16,10 @@ namespace pong
         void StartThread();
         uint8_t pos;
     };
-    void OnP1KeysPressed(uint8_t *pos);
-    void OnP2KeysPressed(uint8_t *pos);
+
+    [[noreturn]] void OnP1KeysPressed(uint8_t *pos);
+
+    [[noreturn]] void OnP2KeysPressed(uint8_t *pos);
     
 } // namespace pong
 

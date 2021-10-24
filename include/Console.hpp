@@ -13,13 +13,13 @@ namespace pong
     {
     private:
        void gtxy(short x, short y);
-       CONSOLE_SCREEN_BUFFER_INFOEX consoleInfo;
+       CONSOLE_SCREEN_BUFFER_INFOEX consoleInfo{};
        HANDLE hConsoleOutput;
        HWND hWindowConsole;
        std::stringstream ssm;
-       void Flushssm();
+       void FlushSsm();
     public:
-        Console(bool debug);
+        explicit Console(bool debug);
         ~Console();
         void Refresh(const pong::Player *p1, const pong::Player *p2);
     };

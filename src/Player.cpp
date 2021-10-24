@@ -1,6 +1,6 @@
 #include <Player.hpp>
 
-void pong::OnP1KeysPressed(uint8_t *pos)
+[[noreturn]] void pong::OnP1KeysPressed(uint8_t *pos)
 {
     while (true)
     {
@@ -13,7 +13,7 @@ void pong::OnP1KeysPressed(uint8_t *pos)
     }
 }
 
-void pong::OnP2KeysPressed(uint8_t *pos)
+[[noreturn]] void pong::OnP2KeysPressed(uint8_t *pos)
 {
     while (true)
     {
@@ -29,8 +29,8 @@ void pong::OnP2KeysPressed(uint8_t *pos)
 pong::Player::Player(uint8_t player)
 {
     this->pos = 0;
-    void *lpStartAdress = player == 1 ? &pong::OnP1KeysPressed : &pong::OnP2KeysPressed;
-    if ( (this->hThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE) lpStartAdress, &this->pos , CREATE_SUSPENDED, NULL)) == INVALID_HANDLE_VALUE) exit(EXIT_FAILURE);
+    if ( (this->hThread = CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE) (player == 1 ? &pong::OnP1KeysPressed : &pong::OnP2KeysPressed), &this->pos , CREATE_SUSPENDED,
+                                       nullptr)) == INVALID_HANDLE_VALUE) exit(EXIT_FAILURE);
 }
 
 pong::Player::~Player()
