@@ -9,7 +9,7 @@
             if (*pos < 10) (*pos)++;
 
         if (GetAsyncKeyState(0x44))
-            if (*pos > 0) (*pos)--;
+            if (*pos > 1) (*pos)--;
     }
 }
 
@@ -22,13 +22,13 @@
             if (*pos < 10) (*pos)++;
 
         if (GetAsyncKeyState(VK_DOWN))
-            if (*pos > 0) (*pos)--;
+            if (*pos > 1) (*pos)--;
     }
 }
 
 pong::Player::Player(uint8_t player)
 {
-    this->pos = 0;
+    this->pos = 5;
     if ( (this->hThread = CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE) (player == 1 ? &pong::OnP1KeysPressed : &pong::OnP2KeysPressed), &this->pos , CREATE_SUSPENDED,
                                        nullptr)) == INVALID_HANDLE_VALUE) exit(EXIT_FAILURE);
 }
