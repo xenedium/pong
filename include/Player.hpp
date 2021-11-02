@@ -14,6 +14,7 @@ namespace pong
         Player(uint8_t player);
         ~Player();
         void StartThread();
+        void PauseThread();
         uint8_t pos;
     };
 
