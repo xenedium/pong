@@ -1,35 +1,53 @@
 #include <Player.hpp>
 
-[[noreturn]] void pong::OnP1KeysPressed(uint8_t *pos)
+[[noreturn]] void pong::Player::OnP1KeysPressed(Player *player)
 {
     while (true)
     {
         Sleep(70);
         if (GetAsyncKeyState(0x45))
-            if (*pos < 10) (*pos)++;
+            player->Up();
 
         if (GetAsyncKeyState(0x44))
-            if (*pos > 1) (*pos)--;
+            player->Down();
     }
 }
 
-[[noreturn]] void pong::OnP2KeysPressed(uint8_t *pos)
+[[noreturn]] void pong::Player::OnP2KeysPressed(Player *player)
 {
     while (true)
     {
         Sleep(70);
         if (GetAsyncKeyState(VK_UP))
-            if (*pos < 10) (*pos)++;
+            player->Up();
 
         if (GetAsyncKeyState(VK_DOWN))
-            if (*pos > 1) (*pos)--;
+            player->Down();
     }
+}
+
+void pong::Player::Up()
+{
+    if (this->pos < 10)
+        this->pos++;
+}
+
+void pong::Player::Down()
+{
+    if (this->pos > 1)
+        this->pos--;
+}
+
+uint8_t pong::Player::GetPos()
+{
+    return this->pos;
 }
 
 pong::Player::Player(uint8_t player)
 {
+    void *func = &pong::Player::OnP1KeysPressed;
     this->pos = 5;
-    if ( (this->hThread = CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE) (player == 1 ? &pong::OnP1KeysPressed : &pong::OnP2KeysPressed), &this->pos , CREATE_SUSPENDED,
+    if ( (this->hThread = CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE) (player == 1 ? &pong::Player::OnP1KeysPressed : &pong::Player::OnP2KeysPressed), this , CREATE_SUSPENDED,
                                        nullptr)) == INVALID_HANDLE_VALUE) exit(EXIT_FAILURE);
 }
 

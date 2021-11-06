@@ -21,11 +21,8 @@ namespace pong
     public:
         explicit Console(bool debug);
         ~Console();
-        void Refresh(const pong::Player *p1, const pong::Player *p2);
+        void Refresh(pong::Player *p1, pong::Player *p2);
     };
-    
-    
-    
 }   
 
 

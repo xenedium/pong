@@ -10,17 +10,20 @@ namespace pong
     {
     private: 
         HANDLE hThread;
+        uint8_t pos;
     public:
         Player(uint8_t player);
+        void Up();
+        void Down();
         ~Player();
         void StartThread();
-        uint8_t pos;
+        [[noreturn]] static void OnP1KeysPressed(Player *player);
+        [[noreturn]] static void OnP2KeysPressed(Player *player);
+        uint8_t GetPos();
     };
 
-    [[noreturn]] void OnP1KeysPressed(uint8_t *pos);
-
-    [[noreturn]] void OnP2KeysPressed(uint8_t *pos);
     
+       
 } // namespace pong
 
 
