@@ -63,5 +63,5 @@ void pong::Player::StartThread()
 
 void pong::Player::PauseThread()
 {
-    
+    if (SuspendThread(this->hThread) == (DWORD) -1) exit(EXIT_FAILURE);
 }
