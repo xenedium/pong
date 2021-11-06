@@ -20,6 +20,8 @@ namespace pong
         [[noreturn]] static void OnP1KeysPressed(Player *player);
         [[noreturn]] static void OnP2KeysPressed(Player *player);
         uint8_t GetPos();
+        void PauseThread();
+        uint8_t pos;
     };
 
     
