@@ -14,7 +14,7 @@ namespace pong
     public:
         App(int argc, char *argv[]);
         ~App();
-        int Start();
+        [[noreturn]] int Start();
     };
     
 } // namespace pong

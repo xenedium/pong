@@ -14,7 +14,7 @@ pong::App::~App()
     delete this->p2;
 }
 
-int pong::App::Start()
+[[noreturn]] int pong::App::Start()
 {
 
     this->p1->StartThread();
