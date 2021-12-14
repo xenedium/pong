@@ -1,6 +1,6 @@
 # PONG GAME
 
-Done:\n
+Done:  
   UserInputs
   Entry point
   Console
